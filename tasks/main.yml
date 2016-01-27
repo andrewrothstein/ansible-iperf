@@ -1,0 +1,18 @@
+---
+- name: install...
+  package: name=iperf state=latest
+
+- name: add iperf user...
+  user: name=iperf shell=/sbin/nologin
+  
+- name: install systemd unit...
+  template: >-
+    src=iperf.service.j2
+    dest=/etc/systemd/system/iperf.service
+    owner=root
+    group=root
+    mode=0644
+
+- name: launch service...
+  service: name=iperf state=started enabled=yes
+  
