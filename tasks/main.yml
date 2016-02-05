@@ -1,6 +1,6 @@
 ---
 - name: install...
-  package: name=iperf state=latest
+  package: name=iperf state=present
 
 - name: add iperf user...
   user: name=iperf shell=/sbin/nologin
