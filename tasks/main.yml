@@ -1,26 +1,33 @@
 ---
 - name: install...
-  become: yes
+  become: true
   become_user: root
-  package: name=iperf state=present
+  package:
+    name: iperf
+    state: present
 
 - name: add iperf user...
-  become: yes
+  become: true
   become_user: root
-  user: name=iperf shell=/sbin/nologin
-  
+  user:
+    name: iperf
+    shell: /sbin/nologin
+
 - name: install systemd unit...
-  become: yes
+  become: true
   become_user: root
   with_items:
-    - etc/systemd/system/iperf.service
-  template: >-
-    src={{item}}.j2
-    dest=/{{item}}
-    mode=0644
+    - d: /etc/systemd/system
+      f: iperf.service
+  template:
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: 0644
 
 - name: launch service...
-  become: yes
+  become: true
   become_user: root
-  service: name=iperf state=started enabled=yes
-  
+  service:
+    name: iperf
+    state: started
+    enabled: true
