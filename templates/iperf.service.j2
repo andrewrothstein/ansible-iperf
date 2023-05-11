@@ -1,13 +1,12 @@
 [Unit]
-Description=iperf Service
+Description={{ iperf_eff_name }} server
 After=network.target
 
 [Service]
 Type=simple
-User=iperf
-ExecStart=/usr/bin/iperf -s
+User={{ iperf_eff_name }}
+ExecStart=/usr/bin/{{ iperf_eff_name }} -s
 Restart=on-abort
-
 
 [Install]
 WantedBy=multi-user.target

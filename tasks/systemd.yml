@@ -1,0 +1,23 @@
+---
+- name: adding {{ iperf_eff_name }} user...
+  become: true
+  become_user: root
+  user:
+    name: '{{ iperf_eff_name }}'
+    shell: /sbin/nologin
+
+- name: installing {{ iperf_eff_name }}.service systemd unit...
+  become: true
+  become_user: root
+  template:
+    src: iperf.service.j2
+    dest: /etc/systemd/system/{{ iperf_eff_name }}.service
+    mode: 0644
+
+- name: launching {{ iperf_eff_name }} service...
+  become: true
+  become_user: root
+  service:
+    name: '{{ iperf_eff_name }}'
+    state: '{{ iperf_systemd_state }}'
+    enabled: '{{ iperf_systemd_enabled }}'

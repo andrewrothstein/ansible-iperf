@@ -1,4 +1,6 @@
 ---
 - hosts: all
+  vars:
+    iperf_systemd_install: false
   roles:
     - role: '{{ playbook_dir }}'

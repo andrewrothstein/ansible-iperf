@@ -1,2 +1,3 @@
 ---
 # vars file for iperf
+iperf_eff_name: iperf{% if iperf3 %}3{% endif %}

@@ -1,2 +1,7 @@
 ---
 # defaults file for iperf
+iperf3: true
+
+iperf_systemd_install: true
+iperf_systemd_state: started
+iperf_systemd_enabled: true
