@@ -30,4 +30,4 @@ galaxy_info:
         - focal
         - jammy
   galaxy_tags:
-    - network tools
+    - networking
