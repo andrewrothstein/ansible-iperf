@@ -1,11 +1,13 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: iperf service
   company: BlackRock
-  license:
-    - MIT
-  min_ansible_version: 2.0
+  description: iperf service
+  galaxy_tags:
+    - networking
+  license: MIT
+  min_ansible_version: '2.0'
+  namespace: andrewrothstein
   platforms:
     - name: Alpine
       versions:
@@ -19,16 +21,14 @@ galaxy_info:
         - bullseye
     - name: EL
       versions:
-        - 8
-        - 9
+        - '8'
+        - '9'
     - name: Fedora
       versions:
-        - 37
-        - 38
+        - '38'
+        - '39'
     - name: Ubuntu
-      version:
+      versions:
         - focal
         - jammy
-  galaxy_tags:
-    - networking
   role_name: iperf

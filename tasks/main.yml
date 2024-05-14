@@ -1,10 +1,10 @@
 ---
-- name: installing {{ iperf_eff_name }} os package...
+- name: Installing {{ iperf_eff_name }} os package...
   become: true
   become_user: root
-  package:
+  ansible.builtin.package:
     name: '{{ iperf_eff_name }}'
     state: present
-- name: installing systemd service unit
+- name: Installing systemd service unit
   when: iperf_systemd_install
-  include_tasks: systemd.yml
+  ansible.builtin.include_tasks: systemd.yml

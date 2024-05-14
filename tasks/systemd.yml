@@ -1,23 +1,23 @@
 ---
-- name: adding {{ iperf_eff_name }} user...
+- name: Adding {{ iperf_eff_name }} user...
   become: true
   become_user: root
-  user:
+  ansible.builtin.user:
     name: '{{ iperf_eff_name }}'
     shell: /sbin/nologin
 
-- name: installing {{ iperf_eff_name }}.service systemd unit...
+- name: Installing {{ iperf_eff_name }}.service systemd unit...
   become: true
   become_user: root
-  template:
+  ansible.builtin.template:
     src: iperf.service.j2
     dest: /etc/systemd/system/{{ iperf_eff_name }}.service
-    mode: 0644
+    mode: '644'
 
-- name: launching {{ iperf_eff_name }} service...
+- name: Launching {{ iperf_eff_name }} service...
   become: true
   become_user: root
-  service:
+  ansible.builtin.service:
     name: '{{ iperf_eff_name }}'
     state: '{{ iperf_systemd_state }}'
     enabled: '{{ iperf_systemd_enabled }}'
